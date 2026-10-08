@@ -1,0 +1,41 @@
+# --- Archivos Compilados (Java) ---
+*.class
+*.log
+*.ctxt
+
+# --- Carpetas de compilación ---
+
+bin/
+out/
+build/
+target/
+
+# --- Archivos de Dependencias y Paquetes ---
+
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# --- Archivos de configuración de IDEs ---
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+.sonarlint/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# VS Code
+.vscode/
+
+# --- Archivos del Sistema Operativo ---
+.DS_Store
+Thumbs.db
