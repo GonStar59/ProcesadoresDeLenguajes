@@ -3,6 +3,11 @@
 *.log
 *.ctxt
 
+# generales
+librerias/
+tabla simbolos
+tipoToken.txt
+
 # --- Carpetas de compilación ---
 
 bin/
