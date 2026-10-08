@@ -3,10 +3,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Map;
+
+import tslib.TS_Gestor;
 
 public class ALex {
 	private int caracter;//guardamos el caracter con su codigo ascii para poder leer correctamente si es un eof 
 	private BufferedReader lector;
+	private TS_Gestor gestor;
+	
+	private Map<Integer,TipoToken> traducionesPRaTT;
 	
 	
 	private String ruta = "tokens.txt";
@@ -15,7 +21,9 @@ public class ALex {
 	public static final int INT_MAX=32767;
 	public static final int CADENA_MAX=64;
 	
-	public ALex() throws IOException{
+	public ALex(TS_Gestor gestor, Map<Integer, TipoToken> traducionesPRaTT) throws IOException{
+		this.traducionesPRaTT = traducionesPRaTT;
+		this.gestor = gestor;
 		this.lector = new BufferedReader(new InputStreamReader(System.in));
 		this.caracter = this.lector.read(); 
 	}
@@ -45,20 +53,21 @@ public class ALex {
 				case 1: lex=lex+(char)caracter;
 						caracter = this.lector.read();
 						break;
-						
-				case 2: TipoToken id=TPR.buscar(lex);
-						if(id!=null) {return genToken(id);}
-						Integer pos = TS.buscar(lex);
-						if(pos==null) {pos = TS.insertar(lex);}
-						return genToken(TipoToken.ID,pos);
 					
+				case 2: int id=gestor.getEntradaTPalabrasReservadas(lex);//buscar si esat en tabla de PR
+						if(id!=0) {return genToken(traducionesPRaTT.get(id));}//Se ha encontrado
+						
+						int pos = gestor.getEntradaTS(lex);
+						if(pos==0) {pos = gestor.addEntradaTSGlobal(lex);}
+						return genToken(TipoToken.ID,pos);
+				
 				//acsemanticas numeros int	
 				
 				case 3: num=num*10+Integer.parseInt(""+(char)caracter);
 						caracter = this.lector.read();
 						break;
 				
-				case 4: if(num>INT_MAX) {throw new Exception();}
+				case 4: if(num>INT_MAX) {throw new IOException();}
 						return genToken(TipoToken.INT, num);
 				
 				//acsemanticas numeros float
@@ -73,7 +82,7 @@ public class ALex {
 						break;
 						
 				case 7:	double valor = Math.pow(num, exp);
-						if(valor>FLOAT_MAX) {throw new Exception();}
+						if(valor>FLOAT_MAX) {throw new IOException();}
 						return genToken(TipoToken.FLOAT, valor);
 				
 				//acSemanticas Cadenas
@@ -84,7 +93,7 @@ public class ALex {
 						break;
 						
 				case 9: caracter = this.lector.read();
-						if(cont>64) {throw new Exception();}
+						if(cont>64) {throw new IOException();}
 						return genToken(TipoToken.CADENA, lex);
 						
 				//acSemanticas q son solo Gentoken
@@ -145,24 +154,24 @@ public class ALex {
 		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta))){
 			escribrir.println("<"+id.name()+","+valor+">");
 		}
-		//crear token
-		return null;
+		//TODO crear token
+		return id;
 	}
 
 	private Object genToken(TipoToken id, String lex) throws IOException {
 		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta))){
 			escribrir.println("<"+id.name()+","+lex+">");
 		}
-		//crear token
-		return null;
+		//TODO crear token
+		return id;
 	}
 
 	private Object genToken(TipoToken id) throws IOException {
 		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta))){
 			escribrir.println("<"+id.name()+", >");
 		}
-		//crear token
-		return null;
+		//TODO crear token
+		return id;
 	}
 	
 	
