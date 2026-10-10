@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,8 +25,13 @@ public class ALex {
 	public ALex(TS_Gestor gestor, Map<Integer, TipoToken> traducionesPRaTT) throws IOException{
 		this.traducionesPRaTT = traducionesPRaTT;
 		this.gestor = gestor;
-		this.lector = new BufferedReader(new InputStreamReader(System.in));
+		//TODO cambiar a System.in
+		this.lector = new BufferedReader(new FileReader("Pruebas1.txt"));
 		this.caracter = this.lector.read(); 
+		
+		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta))){
+			escribrir.println("//TOKENS");
+		}
 	}
 	
 	public Object nextToken() throws IOException{
@@ -39,7 +45,6 @@ public class ALex {
 		int exp=0;
 		
 		while(true) {
-			
 			int[] nuevo = matTransALex.estadoYAccion(estado,caracter);
 			estado= nuevo[0];
 			
@@ -81,7 +86,7 @@ public class ALex {
 						caracter = this.lector.read();
 						break;
 						
-				case 7:	double valor = Math.pow(num, exp);
+				case 7:	double valor = num*Math.pow(10, -exp);
 						if(valor>FLOAT_MAX) {throw new IOException();}
 						return genToken(TipoToken.FLOAT, valor);
 				
@@ -89,7 +94,7 @@ public class ALex {
 				
 				case 8: lex = lex + (char)caracter ;
 						cont++;
-						caracter = this.lector.read();
+						caracter = this.lector.read();  
 						break;
 						
 				case 9: caracter = this.lector.read();
@@ -112,10 +117,10 @@ public class ALex {
 				
 				case 14: caracter = this.lector.read();
 						return genToken(TipoToken.DOSP);
-				
+								
 				case 15: caracter = this.lector.read();
 						return genToken(TipoToken.PARIZQ);
-				
+
 				case 16: caracter = this.lector.read();
 						return genToken(TipoToken.PARDER);
 				
@@ -137,10 +142,12 @@ public class ALex {
 				case 22: caracter = this.lector.read();
 						return genToken(TipoToken.MAYOR);
 				
-				case 23: caracter = this.lector.read();
-						return genToken(TipoToken.EOF);
+				case 23: return genToken(TipoToken.EOF);
 				
-				default: //si se ha llegado aqui es que ha habido un error y por lo tanto habra q pasarle al gestor de errores q error es 
+				default: //TODO si se ha llegado aqui es que ha habido un error y por lo tanto habra q pasarle al gestor de errores q error es 
+					
+					
+					
 			}
 			
 			
@@ -149,9 +156,17 @@ public class ALex {
 		
 	}
 	
+	private Object genToken(TipoToken id, int valor) throws IOException {
+		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
+			escribrir.println("<"+id.name()+","+valor+">");
+		}
+		//TODO crear token
+		return id;
+	}
+	
 
 	private Object genToken(TipoToken id, double valor) throws IOException {
-		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta))){
+		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
 			escribrir.println("<"+id.name()+","+valor+">");
 		}
 		//TODO crear token
@@ -159,7 +174,7 @@ public class ALex {
 	}
 
 	private Object genToken(TipoToken id, String lex) throws IOException {
-		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta))){
+		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
 			escribrir.println("<"+id.name()+","+lex+">");
 		}
 		//TODO crear token
@@ -167,7 +182,7 @@ public class ALex {
 	}
 
 	private Object genToken(TipoToken id) throws IOException {
-		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta))){
+		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
 			escribrir.println("<"+id.name()+", >");
 		}
 		//TODO crear token

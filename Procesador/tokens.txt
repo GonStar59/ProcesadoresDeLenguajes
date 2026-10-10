@@ -1,0 +1,49 @@
+//TOKENS
+<BOOL, >
+<BREAK, >
+<CASE, >
+<ECHO, >
+<FLOAT, >
+<FUNCT, >
+<IF, >
+<INT, >
+<LET, >
+<PROMPT, >
+<RETURN, >
+<STRING, >
+<SWITCH, >
+<VOID, >
+<TRUE, >
+<FALSE, >
+<FLOAT,10.100000000000001>
+<INT,10>
+<FLOAT,40.12>
+<CADENA,holacomoestas>
+<CADENA,hola\comoesats>
+<ASIGY, >
+<ASIG, >
+<COMA, >
+<DOSP, >
+<PCOMA, >
+<PARIZQ, >
+<PARDER, >
+<LLAVEIZQ, >
+<ID,1>
+<LLAVEDER, >
+<SUMA, >
+<NEG, >
+<MENOR, >
+<MAYOR, >
+<ID,2>
+<ID,3>
+<ID,4>
+<ID,5>
+<ID,6>
+<ID,7>
+<ID,8>
+<ID,9>
+<ID,10>
+<ID,11>
+<ID,12>
+<ID,13>
+<EOF, >
