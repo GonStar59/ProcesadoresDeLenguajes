@@ -3,6 +3,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import tslib.TS_Gestor;
+import tslib.TS_Gestor.DescripcionAtributo;
+import tslib.TS_Gestor.Tabla;
+import tslib.TS_Gestor.TipoDatoAtributo;
 
 public class Test1 {
 
@@ -35,11 +38,12 @@ public class Test1 {
 				System.exit(1);
 			}
 			traducionesPRaTT.put(id, tokensPR[i]);
-			System.out.println("PR: "+palabrasReservadas[i]+" gestor num : "+gestor.getEntradaTPalabrasReservadas(palabrasReservadas[i]));
 			
 		}
 		
 	
+		gestor.createAtributo("lexema", DescripcionAtributo.ETIQUETA,TipoDatoAtributo.CADENA);
+		
 		
 		if(gestor.createTSGlobal()==1) {
 			System.out.print("Error creando TSG");
@@ -52,8 +56,9 @@ public class Test1 {
 		
 		while(last!=TipoToken.EOF) {
 			last = (TipoToken) analizadorLexico.nextToken();
+			
 		}
-		
+		gestor.show(Tabla.GLOBAL);
 		
 	}
 
