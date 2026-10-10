@@ -1,4 +1,0 @@
-boolean break case echo float function if int let prompt return string switch void true false 
-10.1 10 40.12 'hola como estas' 'hola\\como esats' &= = , : ; ( ) { ç } + ! < > 
-a b c d e f g h i j k l 
-

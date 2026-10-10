@@ -20,6 +20,7 @@ public class matTransALex {
 		//segundo y tercer digito la columna q hemos recibido
 		//los errores en S se llaman diferente por q sino colisionan con las acc semanticas se les suma 100 simplemente ya que A no tiene codigos de error,
 		//ej estado C y recibimos letra C es el 3 y la letra es la columna 0 entonces cod error 300
+		//error 700 cadena muy grande 200 int muy grande  400 float muy grande
 		};
 
 

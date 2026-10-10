@@ -12,6 +12,7 @@ public class ALex {
 	private int caracter;//guardamos el caracter con su codigo ascii para poder leer correctamente si es un eof 
 	private BufferedReader lector;
 	private TS_Gestor gestor;
+	private GestorErrores errores;
 	
 	private Map<Integer,TipoToken> traducionesPRaTT;
 	
@@ -22,7 +23,8 @@ public class ALex {
 	public static final int INT_MAX=32767;
 	public static final int CADENA_MAX=64;
 	
-	public ALex(TS_Gestor gestor, Map<Integer, TipoToken> traducionesPRaTT) throws IOException{
+	public ALex(TS_Gestor gestor, Map<Integer, TipoToken> traducionesPRaTT,GestorErrores errores) throws IOException{
+		this.errores=errores;
 		this.traducionesPRaTT = traducionesPRaTT;
 		this.gestor = gestor;
 		//TODO cambiar a System.in
@@ -45,6 +47,10 @@ public class ALex {
 		int exp=0;
 		
 		while(true) {
+			if((char)caracter=='\n') {
+				errores.lineaNueva();
+			}
+			
 			int[] nuevo = matTransALex.estadoYAccion(estado,caracter);
 			estado= nuevo[0];
 			
@@ -72,7 +78,7 @@ public class ALex {
 						caracter = this.lector.read();
 						break;
 				
-				case 4: if(num>INT_MAX) {throw new IOException();}
+				case 4: if(num>INT_MAX) {errores.ERROR(num, 200);}
 						return genToken(TipoToken.INT, num);
 				
 				//acsemanticas numeros float
@@ -87,7 +93,7 @@ public class ALex {
 						break;
 						
 				case 7:	double valor = num*Math.pow(10, -exp);
-						if(valor>FLOAT_MAX) {throw new IOException();}
+						if(valor>FLOAT_MAX) {errores.ERROR(valor, 400);}
 						return genToken(TipoToken.FLOAT, valor);
 				
 				//acSemanticas Cadenas
@@ -98,7 +104,7 @@ public class ALex {
 						break;
 						
 				case 9: caracter = this.lector.read();
-						if(cont>64) {throw new IOException();}
+						if(cont>64) {errores.ERROR(lex, 700);}
 						return genToken(TipoToken.CADENA, lex);
 						
 				//acSemanticas q son solo Gentoken
@@ -145,7 +151,17 @@ public class ALex {
 				case 23: return genToken(TipoToken.EOF);
 				
 				default: //TODO si se ha llegado aqui es que ha habido un error y por lo tanto habra q pasarle al gestor de errores q error es 
+					if(nuevo[1]/100==7||nuevo[1]/100==8) {
+						errores.ERROR(lex,nuevo[1]);
+						System.exit(1);
+					}else if(nuevo[1]/100==3) {
+						errores.ERROR(num,nuevo[1]);
+						System.exit(1);
+					}else {
 					
+						errores.ERROR(caracter,nuevo[1]);
+						System.exit(1);
+					}
 					
 					
 			}

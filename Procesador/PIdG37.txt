@@ -1,0 +1,21 @@
+let texto string ;
+function  pideTexto  
+          void         (void)
+{
+	echo 'Introduce un texto';
+	prompt texto;
+}
+function  write  void(_msg1_ string )
+{
+	echo 'Texto introducido:';
+	echo _msg1_;
+}
+
+pideTexto();
+let  textoAux string  ;textoAux = texto;
+write
+ (
+ textoAux                                                    
+ )
+ ;
+echo num_real;

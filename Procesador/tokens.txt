@@ -1,49 +1,54 @@
 //TOKENS
-<BOOL, >
-<BREAK, >
-<CASE, >
-<ECHO, >
-<FLOAT, >
-<FUNCT, >
-<IF, >
-<INT, >
 <LET, >
-<PROMPT, >
-<RETURN, >
+<ID,1>
 <STRING, >
-<SWITCH, >
-<VOID, >
-<TRUE, >
-<FALSE, >
-<FLOAT,10.100000000000001>
-<INT,10>
-<FLOAT,40.12>
-<CADENA,holacomoestas>
-<CADENA,hola\comoesats>
-<ASIGY, >
-<ASIG, >
-<COMA, >
-<DOSP, >
 <PCOMA, >
+<FUNCT, >
+<ID,2>
+<VOID, >
 <PARIZQ, >
+<VOID, >
 <PARDER, >
 <LLAVEIZQ, >
+<ECHO, >
+<CADENA,Introduceuntexto>
+<PCOMA, >
+<PROMPT, >
 <ID,1>
+<PCOMA, >
 <LLAVEDER, >
-<SUMA, >
-<NEG, >
-<MENOR, >
-<MAYOR, >
-<ID,2>
+<FUNCT, >
 <ID,3>
+<VOID, >
+<PARIZQ, >
 <ID,4>
+<STRING, >
+<PARDER, >
+<LLAVEIZQ, >
+<ECHO, >
+<CADENA,Textointroducido>
+<PCOMA, >
+<ECHO, >
+<ID,4>
+<PCOMA, >
+<LLAVEDER, >
+<ID,2>
+<PARIZQ, >
+<PARDER, >
+<PCOMA, >
+<LET, >
 <ID,5>
+<STRING, >
+<PCOMA, >
+<ID,5>
+<ASIG, >
+<ID,1>
+<PCOMA, >
+<ID,3>
+<PARIZQ, >
+<ID,5>
+<PARDER, >
+<PCOMA, >
+<ECHO, >
 <ID,6>
-<ID,7>
-<ID,8>
-<ID,9>
-<ID,10>
-<ID,11>
-<ID,12>
-<ID,13>
-<EOF, >
+<PCOMA, >

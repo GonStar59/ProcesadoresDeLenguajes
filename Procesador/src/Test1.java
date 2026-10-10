@@ -50,7 +50,8 @@ public class Test1 {
 			System.exit(1);
 		}
 		
-		ALex analizadorLexico = new ALex(gestor,traducionesPRaTT);
+		GestorErrores errores = new GestorErrores();
+		ALex analizadorLexico = new ALex(gestor,traducionesPRaTT,errores);
 		
 		TipoToken last=TipoToken.ASIG;
 		
