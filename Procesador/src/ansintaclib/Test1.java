@@ -17,12 +17,13 @@ public class Test1 {
 	public static void main(String[] args) throws IOException {
 
 				
-		TS_Gestor gestor=new TS_Gestor("tabla simbolos");
+		TS_Gestor gestor=new TS_Gestor("Tabla_simbolos.txt");
 		if(gestor.createTPalabrasReservadas()==1) {
 			System.out.print("Error creando TPR");
 			System.exit(1);
 		}
-		//TODO Habria q ver q no hay errores pero por simplicidad lo hacemos despues
+
+		
 		String[] palabrasReservadas = {
 			    "boolean", "break", "case", "echo", "float", 
 			    "function", "if", "int", "let", "prompt", 
@@ -49,7 +50,7 @@ public class Test1 {
 		}
 		
 	
-		gestor.createAtributo("lexema", DescripcionAtributo.ETIQUETA,TipoDatoAtributo.CADENA);
+		gestor.createAtributo("Desplazamiento", DescripcionAtributo.DIR,TipoDatoAtributo.ENTERO);
 		
 		
 		if(gestor.createTSGlobal()==1) {
@@ -66,7 +67,9 @@ public class Test1 {
 			last = analizadorLexico.nextToken();
 			
 		}
+		gestor.write(Tabla.GLOBAL);
 		gestor.show(Tabla.GLOBAL);
+		
 		
 	}
 

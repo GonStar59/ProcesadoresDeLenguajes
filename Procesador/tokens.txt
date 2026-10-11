@@ -1,2 +1,83 @@
 //TOKENS
+<LET, >
+<ID,1>
+<INT, >
+<PCOMA, >
+<LET, >
+<ID,2>
+<INT, >
+<PCOMA, >
+<LET, >
+<ID,3>
+<FLOAT, >
+<PCOMA, >
+<LET, >
+<ID,4>
+<INT, >
+<PCOMA, >
+<ECHO, >
+<CADENA,Introduceelprimervalor>
+<PCOMA, >
+<PROMPT, >
+<ID,1>
+<PCOMA, >
+<ECHO, >
+<CADENA,Introduceelsegundooperando>
+<PCOMA, >
+<PROMPT, >
+<ID,2>
+<PCOMA, >
+<FUNCT, >
+<ID,5>
+<FLOAT, >
+<PARIZQ, >
+<ID,6>
+<FLOAT, >
+<PARDER, >
+<LLAVEIZQ, >
+<RETURN, >
+<ID,6>
+<SUMA, >
+<REAL,9.0>
+<PCOMA, >
+<LLAVEDER, >
+<FUNCT, >
+<ID,7>
+<INT, >
+<PARIZQ, >
+<ID,8>
+<INT, >
+<COMA, >
+<ID,9>
+<INT, >
+<PARDER, >
+<LLAVEIZQ, >
+<LET, >
+<ID,10>
+<INT, >
+<PCOMA, >
+<ID,10>
+<ASIG, >
+<ENTERO,88>
+<SUMA, >
+<ID,8>
+<SUMA, >
+<ID,9>
+<PCOMA, >
+<RETURN, >
+<ID,10>
+<PCOMA, >
+<LLAVEDER, >
+<ID,4>
+<ASIG, >
+<ENTERO,0>
+<PCOMA, >
+<ECHO, >
+<ID,7>
+<PARIZQ, >
+<ID,2>
+<COMA, >
+<ID,1>
+<PARDER, >
+<PCOMA, >
 <EOF, >

@@ -83,7 +83,7 @@ public class ALex {
 						break;
 				
 				case 4: if(num>INT_MAX) {errores.ERROR(num, 200);}
-						return genToken(TipoToken.INT, num);
+						return genToken(TipoToken.ENTERO, num);
 				
 				//acsemanticas numeros float
 						
@@ -98,7 +98,7 @@ public class ALex {
 						
 				case 7:	double valor = num*Math.pow(10, -exp);
 						if(valor>FLOAT_MAX) {errores.ERROR(valor, 400);}
-						return genToken(TipoToken.FLOAT, valor);
+						return genToken(TipoToken.REAL, valor);
 				
 				//acSemanticas Cadenas
 				

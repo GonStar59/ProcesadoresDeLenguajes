@@ -1,0 +1,24 @@
+let a   int      ;
+let b   int      ;
+let cc  float    ;
+let number   int ;
+echo  'Introduce el primer valor' ;prompt 
+	a;
+echo  'Introduce el segundo operando';prompt  
+	b;
+
+function  real float( num1 float)
+{
+	return num1+9.0;
+}
+
+function 
+operacion int
+(num1_ int,  num2_ int )
+{
+	let number_ int;
+	number_ = 88  +  num1_+num2_;
+	return number_;
+}
+number = 0;
+echo operacion(b,a);
