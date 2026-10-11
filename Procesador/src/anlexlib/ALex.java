@@ -1,3 +1,4 @@
+package anlexlib;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -6,6 +7,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import gestorerroreslib.GestorErrores;
+import tokenslib.TipoToken;
+import tokenslib.Token;
 import tslib.TS_Gestor;
 
 public class ALex {
@@ -36,7 +40,7 @@ public class ALex {
 		}
 	}
 	
-	public Object nextToken() throws IOException{
+	public Token nextToken() throws IOException{
 		//colocarnos en el estado inicial
 		int estado = 0;
 		
@@ -172,37 +176,37 @@ public class ALex {
 		
 	}
 	
-	private Object genToken(TipoToken id, int valor) throws IOException {
+	private Token genToken(TipoToken id, int valor) throws IOException {
 		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
 			escribrir.println("<"+id.name()+","+valor+">");
 		}
 		//TODO crear token
-		return id;
+		return new Token(id , valor);
 	}
 	
 
-	private Object genToken(TipoToken id, double valor) throws IOException {
+	private Token genToken(TipoToken id, double valor) throws IOException {
 		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
 			escribrir.println("<"+id.name()+","+valor+">");
 		}
 		//TODO crear token
-		return id;
+		return new Token(id, valor);
 	}
 
-	private Object genToken(TipoToken id, String lex) throws IOException {
+	private Token genToken(TipoToken id, String lex) throws IOException {
 		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
 			escribrir.println("<"+id.name()+","+lex+">");
 		}
 		//TODO crear token
-		return id;
+		return new Token(id, lex);
 	}
 
-	private Object genToken(TipoToken id) throws IOException {
+	private Token genToken(TipoToken id) throws IOException {
 		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
 			escribrir.println("<"+id.name()+", >");
 		}
 		//TODO crear token
-		return id;
+		return new Token(id, null);
 	}
 	
 	

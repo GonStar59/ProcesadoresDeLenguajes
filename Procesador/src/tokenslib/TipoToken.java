@@ -1,3 +1,4 @@
+package tokenslib;
 
 public enum TipoToken {
 	BOOL,

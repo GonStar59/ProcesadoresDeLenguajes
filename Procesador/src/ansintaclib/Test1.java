@@ -1,7 +1,12 @@
+package ansintaclib;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import anlexlib.ALex;
+import gestorerroreslib.GestorErrores;
+import tokenslib.TipoToken;
+import tokenslib.Token;
 import tslib.TS_Gestor;
 import tslib.TS_Gestor.DescripcionAtributo;
 import tslib.TS_Gestor.Tabla;
@@ -10,6 +15,8 @@ import tslib.TS_Gestor.TipoDatoAtributo;
 public class Test1 {
 
 	public static void main(String[] args) throws IOException {
+
+				
 		TS_Gestor gestor=new TS_Gestor("tabla simbolos");
 		if(gestor.createTPalabrasReservadas()==1) {
 			System.out.print("Error creando TPR");
@@ -53,10 +60,10 @@ public class Test1 {
 		GestorErrores errores = new GestorErrores();
 		ALex analizadorLexico = new ALex(gestor,traducionesPRaTT,errores);
 		
-		TipoToken last=TipoToken.ASIG;
+		Token last=null;
 		
-		while(last!=TipoToken.EOF) {
-			last = (TipoToken) analizadorLexico.nextToken();
+		while(last == null || last.getTipoToken()!=TipoToken.EOF) {
+			last = analizadorLexico.nextToken();
 			
 		}
 		gestor.show(Tabla.GLOBAL);

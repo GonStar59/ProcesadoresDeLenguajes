@@ -1,3 +1,5 @@
+package gestorerroreslib;
+import anlexlib.ALex;
 
 public class GestorErrores {
 	int lineaActual;
