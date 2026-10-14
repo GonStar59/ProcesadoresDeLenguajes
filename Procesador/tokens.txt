@@ -16,13 +16,13 @@
 <INT, >
 <PCOMA, >
 <ECHO, >
-<CADENA,Introduceelprimervalor>
+<CADENA,"Introduce el primer operando">
 <PCOMA, >
 <PROMPT, >
 <ID,1>
 <PCOMA, >
 <ECHO, >
-<CADENA,Introduceelsegundooperando>
+<CADENA,"Introduce el segundo operando">
 <PCOMA, >
 <PROMPT, >
 <ID,2>
@@ -45,32 +45,25 @@
 <ID,7>
 <INT, >
 <PARIZQ, >
-<ID,8>
+<ID,6>
 <INT, >
 <COMA, >
-<ID,9>
+<ID,8>
 <INT, >
 <PARDER, >
 <LLAVEIZQ, >
-<LET, >
-<ID,10>
-<INT, >
-<PCOMA, >
-<ID,10>
-<ASIG, >
-<ENTERO,88>
-<SUMA, >
-<ID,8>
-<SUMA, >
-<ID,9>
+<PROMPT, >
+<ID,3>
 <PCOMA, >
 <RETURN, >
-<ID,10>
+<ID,6>
+<SUMA, >
+<ID,8>
 <PCOMA, >
 <LLAVEDER, >
 <ID,4>
 <ASIG, >
-<ENTERO,0>
+<ENTERO,32769>
 <PCOMA, >
 <ECHO, >
 <ID,7>
@@ -78,6 +71,12 @@
 <ID,2>
 <COMA, >
 <ID,1>
+<PARDER, >
+<PCOMA, >
+<ECHO, >
+<ID,5>
+<PARIZQ, >
+<ID,3>
 <PARDER, >
 <PCOMA, >
 <EOF, >

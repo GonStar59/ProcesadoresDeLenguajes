@@ -16,7 +16,6 @@ public class Test1 {
 
 	public static void main(String[] args) throws IOException {
 
-				
 		TS_Gestor gestor=new TS_Gestor("Tabla_simbolos.txt");
 		if(gestor.createTPalabrasReservadas()==1) {
 			System.out.print("Error creando TPR");

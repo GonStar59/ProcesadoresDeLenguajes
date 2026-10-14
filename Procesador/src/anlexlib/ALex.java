@@ -50,7 +50,11 @@ public class ALex {
 		int num=0;
 		int exp=0;
 		
+		
+		
 		while(true) {
+			
+
 			if((char)caracter=='\n') {
 				errores.lineaNueva();
 			}
@@ -154,6 +158,8 @@ public class ALex {
 				
 				case 23: return genToken(TipoToken.EOF);
 				
+				case 24: break; //no hacer nada para cuando se le un eof en un comentario
+				
 				default: //TODO si se ha llegado aqui es que ha habido un error y por lo tanto habra q pasarle al gestor de errores q error es 
 					if(nuevo[1]/100==7||nuevo[1]/100==8) {
 						errores.ERROR(lex,nuevo[1]);
@@ -195,7 +201,7 @@ public class ALex {
 
 	private Token genToken(TipoToken id, String lex) throws IOException {
 		try(PrintWriter escribrir = new PrintWriter(new FileWriter(ruta,true))){
-			escribrir.println("<"+id.name()+","+lex+">");
+			escribrir.println("<"+id.name()+",\""+lex+"\">");
 		}
 		//TODO crear token
 		return new Token(id, lex);
